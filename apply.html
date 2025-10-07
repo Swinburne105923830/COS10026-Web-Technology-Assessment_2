@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Apply Page for Hogwarts School of WitchCraft & Wizardry">
+        <meta name="keywords" content="HTML, Application, Form, Hogwarts">
+        <meta name="author" content="Jacob Grant">
+        <title>Apply Page</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <header>
+            <img src="images/Hogwarts-Crest.png" alt="Hogwarts Crest" class="logo">
+            <div>
+                <h1>Hogwarts School of Witchcraft and Wizardry</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="jobs.html">Jobs</a></li>
+                        <li><a href="apply.html" style="color:#aaa">Apply</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+
+                </nav>
+            </div>
+        </header>
+        
+        <main>
+        <h1 class="apply_heading">Application Page for Hogwarts School of Witchcraft and Wizardry</h1>
+            <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+                <fieldset>
+                    <legend><strong>Applicant Information</strong></legend>
+                    <fieldset>
+                        <legend><strong>Personal Details</strong></legend>
+                        <label for="firstname">First Name:</label>
+                        <input type="text" id="firstname" name="firstname" maxlength="20" pattern="[a-zA-Z]+" required>
+                        <br>
+                        <label for="lastname">Last Name:</label>
+                        <input type="text" id="lastname" name="lastname" maxlength="20" pattern="[a-zA-Z]+" required>
+                        <br>
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" id="dob" name="dob" required>
+                        <br>
+                        
+                        <br>
+                        <fieldset>
+                            <legend>Gender</legend>
+                            <input type="radio" id="male" name="gender" value="male" required>
+                            <label for="male">Male</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Female</label>
+                            <input type="radio" id="other" name="gender" value="other">
+                            <label for="other">Other</label>
+                        </fieldset>
+                        <br>
+
+                        <label for="address">Street Address:</label>
+                        <input type="text" id="address" name="address" maxlength="40" required>
+                        <label for="suburb">Suburb/Town:</label>
+                        <input type="text" id="suburb" name="suburb" maxlength="40" required>
+                        <br>
+
+                        <label for="state">State:</label>
+                        <select id="state" name="state" required>
+                            <option value="">Please Select State</option>
+                            <option value="vic">VIC</option>
+                            <option value="nsw">NSW</option>
+                            <option value="qld">QLD</option>
+                            <option value="nt">NT</option>
+                            <option value="wa">WA</option>
+                            <option value="sa">SA</option>
+                            <option value="tas">TAS</option>
+                            <option value="act">ACT</option>
+                        </select>
+                        <br>
+                        <label for="postcode">Postcode:</label>
+                        <input type="text" id="postcode" name="postcode" pattern="\d{4}" required>
+                        <br>
+
+                        <br>
+                        <label><strong>Contact Information:</strong></label>
+                        <br>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <br>
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone" name="phone" pattern="\d{8,12}"required>
+                        <br>
+                    </fieldset>
+                    <fieldset>
+                        <legend><strong>Job Details</strong></legend>
+                        <p><em>Please read full job description on <strong><a href="jobs.html">Jobs Page</a></strong> before applying to role</em></p>
+                        <br>
+                        <label for="job_reference">Job Reference Number:</label>
+                        <input type="text" id="job_reference" name="job_reference" pattern="[a-zA-Z\d]{5}" required>
+                        <br>
+
+                    <br>
+                    <fieldset>
+                        <legend><strong>Skills List (Tick all that apply):</strong></legend>
+                        <label for="teaching">Teaching Qualification</label>
+                        <input type="checkbox" id=teaching name="skills" value="teaching" checked="checked">
+                        <br>
+                        <label for="systems">Management Systems Knowledge</label>
+                        <input type="checkbox" id="systems" name="skills" value="systems">
+                        <br>
+                        <label for="technology">Technology Expertise</label>
+                        <input type="checkbox" id="technology" name="skills" value="systems"> 
+                        <br>
+                        <label for="communication">Communication Skills</label>
+                        <input type="checkbox" id="communication" name="skills" value="communication">
+                        <br>
+                        <label for="pl_sql">PL/SQL Proficiency</label>
+                        <input type="checkbox" id="pl_sql" name="skills" value="pl_sql"> 
+                        <br>
+                        <label for="html">HTML Proficency</label>
+                        <input type="checkbox" id="html" name="skills" value="html"> 
+                        <br>
+                        <label for="css">CSS Proficency</label>
+                        <input type="checkbox" id="css" name="skills" value="css"> 
+                        <br>
+                        <label for="aws">AWS Database Experience</label>
+                        <input type="checkbox" id="aws" name="skills" value="aws"> 
+                        <br>
+                        <label for="experience">5+ Years Industry Experience</label>
+                        <input type="checkbox" id="experience" name="skills" value="experience"> 
+                        <br>
+                        <label for="other_skills_checkbox">Other Skills:</label>
+                        <input type="checkbox" id="other_skills_checkbox" name="skills" value="other_skills"> 
+                        <br>
+                        <textarea id="other_skills_text" name="other_skills_text" rows="4" cols="40" placeholder="Enter other relevant skills here..."></textarea> 
+                    </fieldset>
+                </fieldset>
+                
+                <input type="submit" value="Register">
+                <input type="reset" value="Clear Form">
+            </fieldset>
+        </form>
+
+        <footer>
+            <p>
+            &copy; 2025 Hogwarts School of Witchcraft and Wizardry |
+            <a href="https://cos10026tuesgroup3.atlassian.net/jira/software/projects/CJWDP/boards/34" target="_blank">Jira</a> |
+            <a href="https://github.com/Swinburne105923830/COS10026-Web-Technology-Assessment.git" target="_blank">GitHub</a> |
+            <a href="mailto:info@hogwarts.com">info@hogwarts.com</a>
+            </p>
+        </footer>
+    </body>
+</html>
