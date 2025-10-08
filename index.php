@@ -40,7 +40,7 @@
             <h3>Announcements:</h3>
             <h4>Now Hiring!</h4>
             <p>We are excited to announce that we are hiring. Check out our jobs page to see a list of available roles or the apply page to register your application!</p>
-            <h5><a href="apply.html">Click Here to Apply Now</a></h5>
+            <h5><a href="apply.php">Click Here to Apply Now</a></h5>
         </section>
     </main>
 
