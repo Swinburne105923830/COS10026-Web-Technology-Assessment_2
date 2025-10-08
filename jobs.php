@@ -31,21 +31,7 @@
 
     <body>
         
-        <header>
-            <img src="images/Hogwarts-Crest.png" alt="Hogwarts Crest" class="logo">
-            <div>
-                <h1>Hogwarts School of Witchcraft and Wizardry</h1>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="jobs.html" style="color:#aaa">Jobs</a></li>
-                        <li><a href="apply.html">Apply</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-
-                </nav>
-            </div>
-        </header>
+        <?php include "header.inc" ?>
 
         <main>
 
@@ -159,14 +145,7 @@
 
         </main>
 
-        <footer>
-            <p>
-            &copy; 2025 Hogwarts School of Witchcraft and Wizardry |
-            <a href="https://cos10026tuesgroup3.atlassian.net/jira/software/projects/CJWDP/boards/34" target="_blank">Jira</a>|
-            <a href="https://github.com/Swinburne105923830/COS10026-Web-Technology-Assessment.git" target="_blank">GitHub</a> |
-            <a href="mailto:info@hogwarts.com">info@hogwarts.com</a>
-        </p>
-        </footer>
+        <?php include "footer.inc" ?>
 
     </body>
 
