@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2025 at 04:06 AM
+-- Generation Time: Oct 21, 2025 at 04:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,8 @@ CREATE TABLE `eoi` (
   `phone` int(12) NOT NULL,
   `job_details` varchar(100) NOT NULL,
   `skills` varchar(100) NOT NULL,
-  `comments` varchar(100) NOT NULL
+  `comments` varchar(100) NOT NULL,
+  `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -62,7 +63,7 @@ ALTER TABLE `eoi`
 -- AUTO_INCREMENT for table `eoi`
 --
 ALTER TABLE `eoi`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
