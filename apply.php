@@ -15,7 +15,7 @@
         
         <main>
         <h1 class="apply_heading">Application Page for Hogwarts School of Witchcraft and Wizardry</h1>
-            <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+            <form action="process_eoi.php" method="post">
                 <fieldset>
                     <legend><strong>Applicant Information</strong></legend>
                     <fieldset>
