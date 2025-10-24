@@ -47,12 +47,12 @@
            $host = "localhost";
   $user = "root"; 
   $pwd = "";
-  $sql_db = "member_contributions";
+  $sql_db = "member_contribution";
             try {
               $pdo = new PDO("mysql:host=$host;dbname=$sql_db", $user, $pwd);
               $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
               
-              $stmt = $pdo->query("SELECT * FROM member_contributions ORDER BY name");
+              $stmt = $pdo->query("SELECT * FROM member_contribution ORDER BY name");
               $members = $stmt->fetchAll(PDO::FETCH_ASSOC);
               
               if(count($members) > 0) {
