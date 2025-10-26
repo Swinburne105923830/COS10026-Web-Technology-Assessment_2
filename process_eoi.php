@@ -27,12 +27,16 @@
         <main>
 
             <?php
+                session_start();
+
                 function clean_input($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
                 return $data;
+                }
 
+                
                 if ($_SERVER["REQUEST_METHOD"] == "POST") { // 
                     $firstname = ($_POST["firstname"]);
                     $lastname = ($_POST["lastname"]);
@@ -141,7 +145,9 @@
                     echo "</ul>";
 
                     echo "<p id='infoname' class='inline-p'>Other Skills:</p>  <p class='inline-p'>$other_skills_text</p><br>";
-                }   
+                } 
+                else 
+                    header('Location: apply.php')
 
             ?>
         
