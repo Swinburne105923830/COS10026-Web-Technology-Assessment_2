@@ -33,7 +33,7 @@
                         <br>
                         <fieldset>
                             <legend>Gender</legend>
-                            <input type="radio" id="male" name="gender" value="male" required>
+                            <input type="radio" id="male" name="gender" value="male" checked="checked" required>
                             <label for="male">Male</label>
                             <input type="radio" id="female" name="gender" value="female">
                             <label for="female">Female</label>
