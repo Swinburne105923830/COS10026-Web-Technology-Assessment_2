@@ -40,19 +40,19 @@
                 if ($_SERVER["REQUEST_METHOD"] == "POST") { 
 
                     // Creating variables for each element in the form.
-                    $firstname = ($_POST["firstname"]); 
-                    $lastname = ($_POST["lastname"]);
+                    $firstname = clean_input($_POST["firstname"]); 
+                    $lastname = clean_input($_POST["lastname"]);
                     $dob = ($_POST["dob"]);
                     $gender = ($_POST["gender"]);
-                    $address = ($_POST["address"]);
-                    $suburb = ($_POST["suburb"]);
+                    $address = clean_input($_POST["address"]);
+                    $suburb = clean_input($_POST["suburb"]);
                     $state = ($_POST["state"]);
-                    $postcode = ($_POST["postcode"]);
-                    $email = ($_POST["email"]);
-                    $phone = ($_POST["phone"]);
-                    $job_reference = ($_POST["job_reference"]);
+                    $postcode = clean_input($_POST["postcode"]);
+                    $email = clean_input($_POST["email"]);
+                    $phone = clean_input($_POST["phone"]);
+                    $job_reference = clean_input($_POST["job_reference"]);
                     $skills = ($_POST["skills"]);
-                    $other_skills_text = ($_POST["other_skills_text"]);
+                    $other_skills_text = clean_input($_POST["other_skills_text"]);
                     
                     echo "<h2>Application Confirmation</h2>";
                     echo "<p>Thank you for your application.</p>";
