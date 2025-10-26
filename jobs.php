@@ -59,89 +59,91 @@
             <br>
             <hr>
 
-            <section id="lecturer" aria-labelledby="lecture_job">
+            
+            <?php include "settings.php";
+            $dbconn = mysqli_connect($host, $user, $pwd, $sql_db);
+            if ($dbconn) {
+                $query = "SELECT * FROM jobs_list";
+                $result = mysqli_query($dbconn, $query);
+                if (!$result) {
+                    echo "<p>There are no jobs to display.";
+                } else {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<section id=" . $row['reference_no'] . ">";
+                        echo "<h4>" . $row['title'] . "</h4>";
+                        echo "<p><strong>Job Reference No. - " . $row['reference_no'] ."</strong></p>";
+                        echo "<p><strong>&#163;" . $row['pay_min'] ." - &#163;" . $row['pay_max'] . " a year.</strong></p>";
+                        echo "<p>" . $row['description'] . "</p>";
+                        echo "<p><strong>Key Responsibilities</strong></p>";
+                        echo "<p>" . $row['responsibility'] . "</p>";
+                        echo "<ol>";
+                        
+                        $responsibilities = json_decode($row['responsibility_list'], true);
 
-                <h4 id="lecture_job">Lecturer (Computing & Software Engineering)</h4>
-                <p><strong>Job Reference No. - DLL35</strong></p>
-                <p><strong>&#163;46,000 - &#163;51,000 a year.</strong></p>
-                <p>The recently established Digital Learning Department at Hogwarts University are seeking a stalwart and professional individual to help their team of dedicated Witches and Wizards enhance Computing education at Hogwarts. This role seeks to attract those who are passionate about computing of all forms, and the opportunities it offers to the world of magic.</p>                
-                <p>You will collaborate with our team of Computer Scientists, and contribute to the development of a new generation of Tech Witches and Wizards at Hogwarts.</p>
-                <p><strong>Key Responsibilities</strong></p>
-                <p>As a lecturer at Hogwarts University, your primary responsibilities are as follows:</p>
-                <ol>
-                    <li>Designing and delivering quality lectures.</li>
-                    <li>Conducting tutorials.</li>
-                    <li>Developing relevant curriculums.</li>
-                    <li>Providing academic guidance and mentorship to students.</li>
-                    <li>Contributing to relevant research at Hogwarts and with its collaborators.</li>
-                </ol>
-                <p><strong>Qualifications</strong></p>
-                <p>In order to be considered for the role, you must have the following:</p>
-                <ul>
-                    <li>Master's qualification in Computer Science, Information Techonology or Software Engineering.</li>
-                    <li>Demonstrated proficiency in a range of programming languages.</li>
-                    <li>At least 2 years of relevant industry experience.</li>
-                </ul>
-                <p>Some skills that are not required, but are desirable include:</p>
-                <ul>
-                    <li>Previous teaching/education qualifications.</li>
-                    <li>Knowledge of learning management systems.</li>
-                    <li>Familiarity with emerging technologies.</li>
-                    <li>Excellent communication and presentation skills.</li>
-                    <li>Familiarity with Hogwarts High School and/or Hogwarts University's education system.</li>
-                </ul>
-                <p><strong>Reporting Line</strong></p>
-                <p>Reports to: </p>
-                    <ul>
-                        <li>Hogwarts Digital Learning Comittee</li>
-                        <li>Head of Teaching and Learning</li>
-                    </ul>
+                        if (is_array($responsibilities)) {
+                            foreach ($responsibilities as $item) {
+                                echo "<li>" . htmlspecialchars($item) . "</li>";
+                            }
+                        } else {
+                            echo "<li>No responsibilities listed.</li>";
+                        }
 
-            </section>
+                        echo "</ol>";
+                        echo "<p><strong>Qualifications</strong></p>";
+                        echo "<p>In order to be considered for the role, you must have the following:</p>";
+                        echo "<ul>";
 
-            <br>
-            <hr>
-            <br>
+                        $qualifications = json_decode($row['qualifications_list'], true);
 
-            <section id="senior_developer" aria-labelledby="senior_dev_job">
+                        if (is_array($qualifications)) {
+                            foreach ($qualifications as $item) {
+                                echo "<li>" . htmlspecialchars($item) . "</li>";
+                            }
+                        } else {
+                            echo "<li>No qualifications listed.</li>";
+                        }
 
-                <h4 id="senior_dev_job">Senior Developer</h4>
-                <p><strong>Job Reference No. - DLD22</strong></p>
-                <p><strong>&#163;56,000 - &#163;60,000 a year.</strong></p>
-                <p>The recently established Digital Learning Department at Hogwarts University are seeking an experienced development professional to join their team of dedicated Witches and Wizards in developing platforms to enhance digital learning across the campus. This role seeks to attract those who are confident in their abilities to lead a team in designing new solutions to help our students thrive in this new learning environment.</p>                
-                <p>You will collaborate with our Software and Engineering department, and contribute to the development of a new era of teaching and learning at Hogwarts.</p>
-                <p><strong>Key Responsibilities</strong></p>
-                <p>As a Senior Developer at Hogwarts, your primary responsibilities are as follows:</p>
-                <ol>
-                    <li>Designing and implementing software to support both teaching and learning.</li>
-                    <li>Leading and managing development projects from conception to deployment.</li>
-                    <li>Mentoring junior developers.</li>
-                    <li>Collaborating with IT leadership to align development efforts with institutional goals.</li>
-                </ol>
-                <p><strong>Qualifications</strong></p>
-                <p>In order to be considered for the role, you must have the following:</p>
-                <ul>
-                    <li>Demonstrated proficiency in programming with PL/SQL, Javascript, HTML5 and CSS.</li>
-                    <li>Experience with AWS database services such as RDS, DynamoDB or Aurora.</li>
-                    <li>At least 5 years of relevant industry experience.</li>
-                </ul>
-                <p>Some skills that are not required, but are desirable include:</p>
-                <ul>
-                    <li>Previous excperience in industry-based mentoring.</li>
-                    <li>Strong and analytical  problem solving abilities.</li>
-                    <li>Knowledge of learning management systems.</li>
-                    <li>Familiarity with emerging technologies.</li>
-                    <li>Excellent communication and presentation skills.</li>
-                    <li>Familiarity with Hogwarts High School and/or Hogwarts University's education system.</li>
-                </ul>
-                <p><strong>Reporting Line</strong></p>
-                <p>Reports to: </p>
-                    <ul>
-                        <li>Hogwarts Digital Learning Comittee</li>
-                        <li>Director of IT</li>
-                    </ul>
+                        echo "</ul>";
+                        echo "<p>Some skills that are not required, but are desirable include:</p>";
+                        echo "<ul>";
 
-            </section>
+                        $desired_skills = json_decode($row['desired_skills_list'], true);
+
+                        if (is_array($desired_skills)) {
+                            foreach ($desired_skills as $item) {
+                                echo "<li>" . htmlspecialchars($item) . "</li>";
+                            }
+                        } else {
+                            echo "<li>No desired skills listed.</li>";
+                        }
+
+                        echo "</ul>";
+                        echo "<p><strong>Reporting Line</strong></p>";
+                        echo "<p>Reports to: </p>";
+                        echo '<ul>';
+
+
+                        $report_line = json_decode($row['report_line_list'], true);
+
+                        if (is_array($report_line)) {
+                            foreach ($report_line as $item) {
+                                echo "<li>" . htmlspecialchars($item) . "</li>";
+                            }
+                        } else {
+                            echo "<li>No report line listed.</li>";
+                        }
+
+                        echo '</ul>';
+                        echo "</section>";
+                        echo "<hr>";
+                    }
+                    
+                }
+                mysqli_close($dbconn);
+            } else {
+                echo "<p>Unable to connect to to the db.</p>";
+            }
+            ?>
 
         </main>
 

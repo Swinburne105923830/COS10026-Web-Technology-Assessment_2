@@ -43,60 +43,44 @@
         <br>
 
         <div class="profile-container">
-          <div class="profile">
-            <img src="images/wizard_jacob.png" alt="profile_pic_jacob" class="profile_pic">
-            <h4>Jacob</h4>
-            <p><strong>Student ID:</strong> 105747580</p>
-            <p><strong>Contributions:</strong></p>
-            <dl>
-              <dt>HTML</dt>
-              <dd>HyperText Markup Language</dd>
-              <dt>CSS</dt>
-              <dd>Cascading Style Sheets</dd>
-            </dl>
-          </div>
-
-          <div class="profile">
-            <img src="images/wizard_lachlan.png" alt="profile_pic_lachlan" class="profile_pic">
-            <h4>Lachlan</h4>
-            <p><strong>Student ID:</strong> 105352793</p>
-            <p><strong>Contributions:</strong></p>
-            <dl>
-              <dt>HTML</dt>
-              <dd>HyperText Markup Language</dd>
-              <dt>CSS</dt>
-              <dd>Cascading Style Sheets</dd>
-            </dl>
-          </div>
-
-          <div class="profile">
-            <img src="images/wizard_damian.png" alt="profile_pic_damian" class="profile_pic">
-            <h4>Damian</h4>
-            <p><strong>Student ID:</strong> 105923830</p>
-              <p><strong>Contributions:</strong></p>
-            <dl>
-              <dt>HTML</dt>
-              <dd>HyperText Markup Language</dd>
-              <dt>CSS</dt>
-              <dd>Cascading Style Sheets</dd>
-            </dl>
-          </div>
-
-          <div class="profile">
-            <img src="images/wizard_maher.png" alt="profile_pic_maher" class="profile_pic">
-            <h4>Maher</h4>
-            <p><strong>Student ID:</strong> 105523230</p>
-            <p><strong>Contributions:</strong></p>
-            <dl>
-              <dt>HTML</dt>
-              <dd>HyperText Markup Language</dd>
-              <dt>CSS</dt>
-              <dd>Cascading Style Sheets</dd>
-            </dl>
-          </div>
+          <?php 
+           $host = "localhost";
+  $user = "root"; 
+  $pwd = "";
+  $sql_db = "member_contribution";
+            try {
+              $pdo = new PDO("mysql:host=$host;dbname=$sql_db", $user, $pwd);
+              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+              
+              $stmt = $pdo->query("SELECT * FROM member_contribution ORDER BY name");
+              $members = $stmt->fetchAll(PDO::FETCH_ASSOC);
+              
+              if(count($members) > 0) {
+                  foreach($members as $member) {
+                      echo '
+                      <div class="profile">
+                        <img src="images/' . htmlspecialchars($member['profile_image']) . '" alt="profile_pic_' . htmlspecialchars($member['name']) . '" class="profile_pic">
+                        <h4>' . htmlspecialchars($member['name']) . '</h4>
+                        <p><strong>Student ID:</strong> ' . htmlspecialchars($member['student_id']) . '</p>
+                        <p><strong>Contributions:</strong></p>
+                        <dl>
+                          <dt>Project 1</dt>
+                          <dd>' . htmlspecialchars($member['project1_contributions']) . '</dd>
+                          <dt>Project 2</dt>
+                          <dd>' . htmlspecialchars($member['project2_contributions']) . '</dd>
+                        </dl>
+                      </div>';
+                  }
+              } else {
+                  echo '<p>No team members found in database.</p>';
+              }
+          } catch(PDOException $e) {
+              echo "<p>Error loading team members: " . $e->getMessage() . "</p>";
+          }
+          ?>
         </div>
 
-      <table>
+           <table>
         <caption><strong>Team Fun Facts</strong></caption>
         <thead>
           <tr>
@@ -106,31 +90,32 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td>Jacob</td>
-            <td>Likes to ride bikes</td>
-          </tr>
-
-          <tr>
-            <td>Damian</td>
-            <td>Likes to solve rubiks cubes</td>
-          </tr>
-
-          <tr>
-            <td>Lachlan</td>
-            <td>Likes old video games</td>
-          </tr>
-
-          <tr>
-            <td>Maher</td>
-            <td>Likes Football(Soccer)</td>
-          </tr>
+          <?php
+           try {
+              $stmt = $pdo->query("SELECT name, fun_fact FROM member_contributions ORDER BY name");
+              $hasData = false;
+              while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  $hasData = true;
+                  echo '
+                  <tr>
+                    <td>' . htmlspecialchars($row['name']) . '</td>
+                    <td>' . htmlspecialchars($row['fun_fact']) . '</td>
+                  </tr>';
+              }
+              if(!$hasData) {
+                  echo '<tr><td colspan="2">No fun facts available</td></tr>';
+              }
+          } catch(PDOException $e) {
+              echo "<tr><td colspan='2'>Error loading fun facts: " . $e->getMessage() . "</td></tr>";
+          }
+          ?>
         </tbody>
       </table>
 
     </main>
 
     <?php include "footer.inc" ?>
+    <?php if(isset($pdo)) { $pdo = null; } // Close connection ?>
 
   </body>
 </html>
