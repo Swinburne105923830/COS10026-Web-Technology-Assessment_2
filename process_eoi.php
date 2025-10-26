@@ -36,9 +36,11 @@
                 return $data;
                 }
 
-                
-                if ($_SERVER["REQUEST_METHOD"] == "POST") { // 
-                    $firstname = ($_POST["firstname"]);
+                // If the webpage is accessed through posting an HTML form.
+                if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+
+                    // Creating variables for each element in the form.
+                    $firstname = ($_POST["firstname"]); 
                     $lastname = ($_POST["lastname"]);
                     $dob = ($_POST["dob"]);
                     $gender = ($_POST["gender"]);
@@ -58,10 +60,10 @@
                     echo "<hr>";
                     echo "<h3>Personal Details</h3>";
 
-                    if (empty($firstname)) {
-                        echo "<p class='inline-p'>First Name is required.</p>";
+                    if (empty($firstname)) { //If the form element is empty, a message stating that the element is required will be displayed.
+                        echo "<p>First Name is required.</p>";
                     }
-                    else {
+                    else { //If the form element is present, the user input will be displayed.
                             echo "<p id='infoname' class='inline-p'>First name:</p> <p class='inline-p'>$firstname</p><br>";
                         }
 
@@ -143,17 +145,17 @@
                     echo implode("<li>", $skills);
 
                     echo "</ul>";
-
+                    
                     echo "<p id='infoname' class='inline-p'>Other Skills:</p>  <p class='inline-p'>$other_skills_text</p><br>";
+
+                    echo "<hr>";
+
+                    echo "<p>Any issues? Send us an email at <a href='mailto:info@hogwarts.com'>info@hogwarts.com</a> with your application number and any amendments you would like to make.</p>";
                 } 
                 else 
-                    header('Location: apply.php')
+                    header('Location: apply.php') // If a user tries to access the webpage when not submitting a form, they will be redirected to apply.php instead.
 
             ?>
-        
-            <hr>
-
-            <p>Any issues? Send us an email at <a href="mailto:info@hogwarts.com">info@hogwarts.com</a> with your application number and any amendments you would like to make.</p>
         
         </main>
 

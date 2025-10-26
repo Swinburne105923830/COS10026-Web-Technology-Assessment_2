@@ -15,7 +15,7 @@
         
         <main>
         <h1 class="apply_heading">Application Page for Hogwarts School of Witchcraft and Wizardry</h1>
-            <form action="process_eoi.php" method="post">
+            <form action="process_eoi.php" method="post" novalidate="novalidate">
                 <fieldset>
                     <legend><strong>Applicant Information</strong></legend>
                     <fieldset>
