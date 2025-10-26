@@ -15,7 +15,7 @@
         
         <main>
         <h1 class="apply_heading">Application Page for Hogwarts School of Witchcraft and Wizardry</h1>
-            <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+            <form action="process_eoi.php" method="post">
                 <fieldset>
                     <legend><strong>Applicant Information</strong></legend>
                     <fieldset>
@@ -87,34 +87,34 @@
                     <fieldset>
                         <legend><strong>Skills List (Tick all that apply):</strong></legend>
                         <label for="teaching">Teaching Qualification</label>
-                        <input type="checkbox" id=teaching name="skills" value="teaching" checked="checked">
+                        <input type="checkbox" name="skills[]" value="teaching" checked="checked"> <!-- Had to remove ID from each checkbox in order to create an array in process_eoi. -Lachlan -->
                         <br>
                         <label for="systems">Management Systems Knowledge</label>
-                        <input type="checkbox" id="systems" name="skills" value="systems">
+                        <input type="checkbox" name="skills[]" value="systems">
                         <br>
                         <label for="technology">Technology Expertise</label>
-                        <input type="checkbox" id="technology" name="skills" value="systems"> 
+                        <input type="checkbox" name="skills[]" value="systems"> 
                         <br>
                         <label for="communication">Communication Skills</label>
-                        <input type="checkbox" id="communication" name="skills" value="communication">
+                        <input type="checkbox" name="skills[]" value="communication">
                         <br>
                         <label for="pl_sql">PL/SQL Proficiency</label>
-                        <input type="checkbox" id="pl_sql" name="skills" value="pl_sql"> 
+                        <input type="checkbox" name="skills[]" value="pl_sql"> 
                         <br>
                         <label for="html">HTML Proficency</label>
-                        <input type="checkbox" id="html" name="skills" value="html"> 
+                        <input type="checkbox" name="skills[]" value="html"> 
                         <br>
                         <label for="css">CSS Proficency</label>
-                        <input type="checkbox" id="css" name="skills" value="css"> 
+                        <input type="checkbox" name="skills[]" value="css"> 
                         <br>
                         <label for="aws">AWS Database Experience</label>
-                        <input type="checkbox" id="aws" name="skills" value="aws"> 
+                        <input type="checkbox" name="skills[]" value="aws"> 
                         <br>
                         <label for="experience">5+ Years Industry Experience</label>
-                        <input type="checkbox" id="experience" name="skills" value="experience"> 
+                        <input type="checkbox" name="skills[]" value="experience"> 
                         <br>
                         <label for="other_skills_checkbox">Other Skills:</label>
-                        <input type="checkbox" id="other_skills_checkbox" name="skills" value="other_skills"> 
+                        <input type="checkbox" name="skills[]" value="other_skills"> 
                         <br>
                         <textarea id="other_skills_text" name="other_skills_text" rows="4" cols="40" placeholder="Enter other relevant skills here..."></textarea> 
                     </fieldset>
