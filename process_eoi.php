@@ -58,12 +58,12 @@
                     $lastname = clean_input($_POST["lastname"]);
                     $dob = ($_POST["dob"]);
                     $gender = ($_POST["gender"]);
-                    $street_address = clean_input($_POST["address"]);
+                    $address = clean_input($_POST["address"]);
                     $suburb = clean_input($_POST["suburb"]);
                     $state = ($_POST["state"]);
                     $postcode = clean_input($_POST["postcode"]);
                     $email = clean_input($_POST["email"]);
-                    $phone = clean_input($_POST["phone"]);
+                    $phone_number = clean_input($_POST["phone"]);
                     $job_reference = clean_input($_POST["job_reference"]);
                     $skills_list = isset($_POST["skills"]) ? $_POST["skills"] : []; //Made sure atleast one box needs to be selected
                     $other_selected = false;
@@ -126,11 +126,11 @@
                     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validates whether the user input is in a valid email format.
                         $errors[] = "<p>Email submitted in an invalid format</p>";
 
-                    if (empty($phone))
+                    if (empty($phone_number))
                         $errors[] = "<p>Phone Number entry is required</p>";
-                    elseif (!is_numeric($phone)) // Entry can only contain numbers.
+                    elseif (!is_numeric($phone_number)) // Entry can only contain numbers.
                         $errors[] = "<p>Phone Number can only contain numbers.";
-                    elseif (mb_strlen($phone) > 12 || mb_strlen($phone) < 8) // Entry must between 8 and 12 characters.
+                    elseif (mb_strlen($phone_number) > 12 || mb_strlen($phone_number) < 8) // Entry must between 8 and 12 characters.
                         $errors[] = "<p>Phone Number must be between 8 and 12 characters.<p>";
 
                     if (empty($job_reference))
@@ -140,14 +140,13 @@
                     elseif (mb_strlen($job_reference) > 5 || mb_strlen($job_reference) < 5) // Entry must be 5 characters exactly.
                         $errors[] = "<p>Job Reference Number must be 5 characters.<p>";
                     
-                    if (empty($skills))
-                        $errors[] = "<p>Skills selection is required</p>";
+                
 
                     // If the errors array is empty, the webpage will display the information that the user submitted via the form.
                     if (empty($errors)){
 
                         $sql = "INSERT INTO eoi (job_reference, first_name, last_name, dob, gender, street_address, suburb, state, postcode, email, phone_number, skill_list, other_skills) 
-                        VALUES('$job_reference', '$first_name','$$last_name', '$dob', '$gender', '$street_address', 
+                        VALUES('$job_reference', '$firstname','$$lastname', '$dob', '$gender', '$address', 
                                 '$suburb', '$state', '$postcode', '$email', '$phone_number', '$skill_list, '$other_skills')";
 
                         echo "<h2>Application Submission Successful</h2>";
@@ -159,7 +158,7 @@
                         echo "<p id='infoname' class='inline-p'>Last name:</p>  <p class='inline-p'>$lastname</p><br>";
                         echo "<p id='infoname' class='inline-p'>Date of Birth:</p>  <p class='inline-p'>$dob</p><br>";
                         echo "<p id='infoname' class='inline-p'>Gender:</p>  <p class='inline-p'>$gender</p><br>";
-                        echo "<p id='infoname' class='inline-p'>Address:</p>  <p class='inline-p'>$street_address</p><br>";
+                        echo "<p id='infoname' class='inline-p'>Address:</p>  <p class='inline-p'>$address</p><br>";
                         echo "<p id='infoname' class='inline-p'>Suburb:</p>  <p class='inline-p'>$suburb</p><br>";
                         echo "<p id='infoname' class='inline-p'>State:</p>  <p class='inline-p'>$state</p><br>";
                         echo "<p id='infoname' class='inline-p'>Postcode:</p>  <p class='inline-p'>$postcode</p><br>";
@@ -173,7 +172,7 @@
                         echo implode("<li>", $skills);
                         echo "</ul>";
                         echo "<p id='infoname' class='inline-p'>Other Skills:&nbsp;</p>";
-                        if (empty($other_skills_text)){
+                        if (empty($other_skills)){
                             echo "<p class='inline-p'>N/A</p><br>";
                         }
                         else {
