@@ -43,7 +43,6 @@
         <br>
 
         <div class="profile-container">
-
           <?php 
           require_once "settings.php";
     
@@ -51,7 +50,8 @@
               $pdo = new PDO("mysql:host=$host;dbname=$sql_db", $user, $pwd);
               $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
               
-              $stmt = $pdo->query("SELECT * FROM member_contribution ORDER BY name");
+              
+              $stmt = $pdo->query("SELECT * FROM member_contributions ORDER BY name");
               $members = $stmt->fetchAll(PDO::FETCH_ASSOC);
               
               if(count($members) > 0) {
@@ -79,7 +79,7 @@
           ?>
         </div>
 
-           <table>
+      <table>
         <caption><strong>Team Fun Facts</strong></caption>
         <thead>
           <tr>
@@ -90,7 +90,8 @@
 
         <tbody>
           <?php
-           try {
+          // Display fun facts from database
+          try {
               $stmt = $pdo->query("SELECT name, fun_fact FROM member_contributions ORDER BY name");
               $hasData = false;
               while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
