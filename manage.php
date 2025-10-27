@@ -1,21 +1,4 @@
-<?php
-    require_once "settings.php";
-    session_start();
 
-    function clean_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-    }
-
-    $conn = mysqli_connect($host, $user, $pwd, $sql_db);
-
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-        }
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,13 +15,29 @@
     <body>
         
         <?php include "header.inc"; ?>
-        <?php include "nav.inc"; ?>
+
         <main>
             
     
             <?php
 
-             function run_manage() {
+                require_once "settings.php";
+                session_start();
+
+                function clean_input($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+                }
+
+                $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+        }
+
                 echo "<h2>Management Search</h2>";
                 echo "<form action='manage.php' method='get' novalidate='novalidate'>";
                 echo "<fieldset>";
@@ -53,23 +52,35 @@
                 echo "<input type='submit' value='Search'>";
                 echo "</fieldset>";
                 echo "</form>";
-             }
 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $username = clean_input($_POST['username']);
-                $password = clean_input($_POST['password']);
+            
+                    $query = "SELECT * FROM eoi";
+                    $result = $conn->query($query);
 
-                if ($username === "Admin" && $password === "Admin")
-                    run_manage();
-                else 
-                    header('Location: login.php');
-
-            } elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
-                run_manage();
-            } 
-            else {
-                header('Location: login.php');
-            }
+                    if ($result->num_rows > 0){
+                        echo "<table border='1' cellpadding='5'>";
+                        echo "<tr><th>ID</th><th>Job Reference</th><th>First Name</th><th>Last Name</th><th>Date Of Birth</th><th>Gender</th><th>Street Address</th><th>Suburb</th<th>Postcode</th><th>Email</th><th>Phone Number</th><th>Skill List</th><th>Other Skillsder</th></tr>";
+                        while ($row = $result->fetch_assoc()){
+                            echo "<tr>";
+                            echo "<td>" . $row['applicant_id'] . "</td>";
+                            echo "<td>" . $row['job_reference'] . "</td>";
+                            echo "<td>" . $row['first_name'] . "</td>";
+                            echo "<td>" . $row['last_name'] . "</td>";
+                            echo "<td>" . $row['dob'] . "</td>";
+                            echo "<td>" . $row['gender'] . "</td>";
+                            echo "<td>" . $row['street_address'] . "</td>";
+                            echo "<td>" . $row['suburb'] . "</td>";
+                            echo "<td>" . $row['postcode'] . "</td>";
+                            echo "<td>" . $row['email'] . "</td>";
+                            echo "<td>" . $row['phone_number'] . "</td>";
+                            echo "<td>" . $row['skills_list'] . "</td>";
+                            echo "<td>" . $row['other_skills'] . "</td>";
+                            echo "</tr>";  
+                       }
+                       echo "</table>";
+                    } else {
+                        echo "<p>Zero results found</p>";
+                    }
                 
 
             ?>
