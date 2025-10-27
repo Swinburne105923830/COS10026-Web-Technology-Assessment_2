@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2025 at 05:10 AM
+-- Generation Time: Oct 27, 2025 at 06:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `eoi` (
+  `applicant_id` int(11) NOT NULL,
   `job_reference` varchar(5) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
@@ -60,6 +61,13 @@ CREATE TABLE `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`job_reference`, `title`, `description`, `salary`, `reporting_line`, `key_responsibilities`, `requirements`) VALUES
+('DLL35', 'Computer Science Lecturer', 'Brief job description', 0, 'Head of Department', 'Lecturing classes\r\nDemonstration of code', '2+ Years of Industry');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -67,13 +75,34 @@ CREATE TABLE `jobs` (
 -- Indexes for table `eoi`
 --
 ALTER TABLE `eoi`
-  ADD PRIMARY KEY (`job_reference`);
+  ADD PRIMARY KEY (`applicant_id`),
+  ADD KEY `job_reference` (`job_reference`);
 
 --
 -- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`job_reference`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `eoi`
+--
+ALTER TABLE `eoi`
+  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `eoi`
+--
+ALTER TABLE `eoi`
+  ADD CONSTRAINT `eoi_ibfk_1` FOREIGN KEY (`job_reference`) REFERENCES `jobs` (`job_reference`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
