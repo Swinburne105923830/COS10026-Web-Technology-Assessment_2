@@ -6,7 +6,7 @@
         $password = $_POST['password'];
     }
 
-    if($username === "Admin" && $_password === "Admin"){
+    if($username === "Admin" && $password === "Admin"){
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
         header("Location: manage.php");
