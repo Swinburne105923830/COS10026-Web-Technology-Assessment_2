@@ -22,6 +22,7 @@
 <body>
     
     <?php include "header.inc" ?>
+    <?php include "nav.inc" ?>
 
     <main>
         <section class="company-details">

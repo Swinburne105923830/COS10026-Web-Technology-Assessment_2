@@ -89,6 +89,7 @@ header h1 {
     text-shadow: #000000 0.1rem 0.1rem 5px;
     margin: 0;
 }
+
 nav ul {
     color: var(--text-color);
     display: grid;

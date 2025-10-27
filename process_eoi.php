@@ -23,10 +23,12 @@
     <body>
 
         <?php include "header.inc" ?>
+        <?php include "nav.inc" ?>
 
         <main>
 
             <?php
+                require_once "settings.php";
                 session_start();
 
                 function clean_input($data) {
@@ -34,6 +36,13 @@
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
                 return $data;
+                }
+
+                $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
                 }
 
                 // If the webpage is accessed through posting an HTML form.
