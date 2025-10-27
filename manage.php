@@ -2,6 +2,20 @@
     require_once "settings.php";
     session_start();
 
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+    }
+
+    if($username == "Admin" && $password == "Admin"){
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] == $username;
+        header("Location: manage.php");
+        exit;
+    } else {
+        $error = "Invalid username or password.";
+    }
+
     if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         //if not logged in, destory the session and redirect to the login page
         session_destroy();
@@ -71,16 +85,16 @@
                             echo "<tr>";
                             echo "<td>" . $row['applicant_id'] . "</td>";
                             echo "<td>" . $row['job_reference'] . "</td>";
-                            echo "<td>" . $row['first_name'] . "</td>";
-                            echo "<td>" . $row['last_name'] . "</td>";
+                            echo "<td>" . $row['firstname'] . "</td>";
+                            echo "<td>" . $row['lastname'] . "</td>";
                             echo "<td>" . $row['dob'] . "</td>";
                             echo "<td>" . $row['gender'] . "</td>";
-                            echo "<td>" . $row['street_address'] . "</td>";
+                            echo "<td>" . $row['address'] . "</td>";
                             echo "<td>" . $row['suburb'] . "</td>";
                             echo "<td>" . $row['postcode'] . "</td>";
                             echo "<td>" . $row['email'] . "</td>";
                             echo "<td>" . $row['phone_number'] . "</td>";
-                            echo "<td>" . $row['skills_list'] . "</td>";
+                            echo "<td>" . $row['skills'] . "</td>";
                             echo "<td>" . $row['other_skills'] . "</td>";
                             echo "</tr>";  
                        }

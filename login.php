@@ -1,28 +1,3 @@
-<?php
-    session_start();
-
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-    }
-
-    if($username === "Admin" && $password === "Admin"){
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-        header("Location: manage.php");
-        exit;
-    } else {
-        $error = "Invalid username or password.";
-    }
-
-    function clean_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-        }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +16,7 @@
         
         <main>
             <h2>Management Login:</h2>
+            <?php if (isset($error)) { echo "<p style='color:red;'>$error</p>";} ?>
             <form action="manage.php" method="post" novalidate="novalidate">
                 <fieldset>
                 <label for="username">Username:</label>
