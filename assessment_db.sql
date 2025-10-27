@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2025 at 01:50 PM
+-- Generation Time: Oct 27, 2025 at 01:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `eoi` (
   `postcode` int(4) NOT NULL,
   `email` varchar(40) NOT NULL,
   `phone_number` int(12) NOT NULL,
-  `skill_list` enum('Teaching Qualification','Management Systems Knowledge','Technology Expertise','Communication Skills','PL/SQL Proficiency','HTML Proficiency','CSS Proficiency','AWS Database Experience','5+ Years Industry Experience') NOT NULL,
+  `skills` enum('Teaching Qualification','Management Systems Knowledge','Technology Expertise','Communication Skills','PL/SQL Proficiency','HTML Proficiency','CSS Proficiency','AWS Database Experience','5+ Years Industry Experience') NOT NULL,
   `other_skills` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
