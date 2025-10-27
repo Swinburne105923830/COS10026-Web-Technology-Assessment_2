@@ -1,25 +1,23 @@
 
 
-            <?php
-                require_once "settings.php";
-                session_start();
-                include "header.inc";
-                include "nav.inc";
+<?php
+    require_once "settings.php";
+    session_start();
 
-                function clean_input($data) {
-                $data = trim($data);
-                $data = stripslashes($data);
-                $data = htmlspecialchars($data);
-                return $data;
-                }
+    function clean_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+    }
 
-                $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+    $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-                ?>
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +39,8 @@
                 font-weight: bold;
             }
         </style>
+        <?php include "header.inc"; ?>
+        <?php include "nav.inc"; ?>
     </head>
     <body>
         <main>
@@ -58,16 +58,16 @@
                     $lastname = clean_input($_POST["lastname"]);
                     $dob = ($_POST["dob"]);
                     $gender = ($_POST["gender"]);
-                    $address = clean_input($_POST["address"]);
+                    $street_address = clean_input($_POST["address"]);
                     $suburb = clean_input($_POST["suburb"]);
                     $state = ($_POST["state"]);
                     $postcode = clean_input($_POST["postcode"]);
                     $email = clean_input($_POST["email"]);
                     $phone = clean_input($_POST["phone"]);
                     $job_reference = clean_input($_POST["job_reference"]);
-                    $skills = isset($_POST["skills"]) ? $_POST["skills"] : []; //Made sure atleast one box needs to be selected
+                    $skills_list = isset($_POST["skills"]) ? $_POST["skills"] : []; //Made sure atleast one box needs to be selected
                     $other_selected = false;
-                    $other_skills_text = clean_input($_POST["other_skills_text"]);
+                    $other_skills = clean_input($_POST["other_skills_text"]);
 
                     // "errors" array is created. This is used to determine how the page is presented if errors are present.
                     $errors = []; 
@@ -146,9 +146,9 @@
                     // If the errors array is empty, the webpage will display the information that the user submitted via the form.
                     if (empty($errors)){
 
-                        $sql = "INSERT INTO eoi (job_reference, first_name, last_name, dob, gender, street_address, suburb, state, postcode, email, phone, skills, other_skills) 
-                        VALUES('$job_reference', '$first_name','$$last_name', '$dob', '$gender', '$address', 
-                                '$suburb', '$state', '$postcode', '$email', '$phone', '$skills, '$other_skills')";
+                        $sql = "INSERT INTO eoi (job_reference, first_name, last_name, dob, gender, street_address, suburb, state, postcode, email, phone_number, skill_list, other_skills) 
+                        VALUES('$job_reference', '$first_name','$$last_name', '$dob', '$gender', '$street_address', 
+                                '$suburb', '$state', '$postcode', '$email', '$phone_number', '$skill_list, '$other_skills')";
 
                         echo "<h2>Application Submission Successful</h2>";
                         echo "<p>Thank you for your application.</p>";
@@ -159,13 +159,13 @@
                         echo "<p id='infoname' class='inline-p'>Last name:</p>  <p class='inline-p'>$lastname</p><br>";
                         echo "<p id='infoname' class='inline-p'>Date of Birth:</p>  <p class='inline-p'>$dob</p><br>";
                         echo "<p id='infoname' class='inline-p'>Gender:</p>  <p class='inline-p'>$gender</p><br>";
-                        echo "<p id='infoname' class='inline-p'>Address:</p>  <p class='inline-p'>$address</p><br>";
+                        echo "<p id='infoname' class='inline-p'>Address:</p>  <p class='inline-p'>$street_address</p><br>";
                         echo "<p id='infoname' class='inline-p'>Suburb:</p>  <p class='inline-p'>$suburb</p><br>";
                         echo "<p id='infoname' class='inline-p'>State:</p>  <p class='inline-p'>$state</p><br>";
                         echo "<p id='infoname' class='inline-p'>Postcode:</p>  <p class='inline-p'>$postcode</p><br>";
                         echo "<h3>Contact Details</h3>";
                         echo "<p id='infoname' class='inline-p'>Email:</p>  <p class='inline-p'>$email</p><br>";
-                        echo "<p id='infoname' class='inline-p'>Phone Number:</p>  <p class='inline-p'>$phone</p><br>";
+                        echo "<p id='infoname' class='inline-p'>Phone Number:</p>  <p class='inline-p'>$phone_number</p><br>";
                         echo "<h3>Job Details</h3>";
                         echo "<p id='infoname' class='inline-p'>Job Reference Number:</p>  <p class='inline-p'>$job_reference</p><br>";
                         echo "<p id='infoname' class='inline-p'>Skills List:</p><br>";
@@ -177,7 +177,7 @@
                             echo "<p class='inline-p'>N/A</p><br>";
                         }
                         else {
-                            echo "<p class='inline-p'>$other_skills_text</p><br>";
+                            echo "<p class='inline-p'>$other_skills</p><br>";
                         }
                         
                         echo "<hr>";
