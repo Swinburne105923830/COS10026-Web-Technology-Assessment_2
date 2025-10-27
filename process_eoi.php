@@ -68,6 +68,10 @@
                     $phone_number = clean_input($_POST["phone"]);
                     $job_reference = clean_input($_POST["job_reference"]);
 
+                    //Convert arrays into comma separated strings to handle checkboxes
+                    $skills = isset($_POST["pet"]) ? implode(", ", array_map('sanitise_input', $_POST["pet"])) : "";
+
+
                     // "errors" array is created. This is used to determine how the page is presented if errors are present.
                     $errors = []; 
                     
@@ -138,6 +142,9 @@
                         $errors[] = "<p>Job Reference Number can only contain letters and numbers.</p>";
                     elseif (mb_strlen($job_reference) > 5 || mb_strlen($job_reference) < 5) // Entry must be 5 characters exactly.
                         $errors[] = "<p>Job Reference Number must be 5 characters.<p>";
+
+                    if (empty($skills)) $errors[] = "<p>Please select at least one skill.</p>";
+
                     
                 
 
