@@ -68,7 +68,7 @@
                     $job_reference = clean_input($_POST["job_reference"]);
 
                     //Convert arrays into comma separated strings to handle checkboxes
-                    $skills = isset($_POST["pet"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
+                    $skills = isset($_POST["skills"]) ? implode(", ", array_map('sanitise_input', $_POST["skills"])) : "";
 
 
                     // "errors" array is created. This is used to determine how the page is presented if errors are present.
