@@ -2,6 +2,13 @@
     require_once "settings.php";
     session_start();
 
+    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+        //if not logged in, destory the session and redirect to the login page
+        session_destroy();
+        header('Location: login.php');
+        exit;
+    }
+
     function clean_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -32,7 +39,7 @@
     <body>
         
         <?php include "header.inc"; ?>
-        <?php include "nav.inc"; ?>
+        
         <main>
             
     
