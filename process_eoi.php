@@ -39,10 +39,12 @@
                 font-weight: bold;
             }
         </style>
-        <?php include "header.inc"; ?>
-        <?php include "nav.inc"; ?>
+        
     </head>
     <body>
+        
+        <?php include "header.inc"; ?>
+        <?php include "nav.inc"; ?>
         <main>
     
     <?php
@@ -65,9 +67,6 @@
                     $email = clean_input($_POST["email"]);
                     $phone_number = clean_input($_POST["phone"]);
                     $job_reference = clean_input($_POST["job_reference"]);
-                    $skills_list = isset($_POST["skills"]) ? $_POST["skills"] : []; //Made sure atleast one box needs to be selected
-                    $other_selected = false;
-                    $other_skills = clean_input($_POST["other_skills_text"]);
 
                     // "errors" array is created. This is used to determine how the page is presented if errors are present.
                     $errors = []; 
@@ -145,9 +144,13 @@
                     // If the errors array is empty, the webpage will display the information that the user submitted via the form.
                     if (empty($errors)){
 
-                        $sql = "INSERT INTO eoi (job_reference, first_name, last_name, dob, gender, street_address, suburb, state, postcode, email, phone_number, skill_list, other_skills) 
-                        VALUES('$job_reference', '$firstname','$$lastname', '$dob', '$gender', '$address', 
-                                '$suburb', '$state', '$postcode', '$email', '$phone_number', '$skill_list, '$other_skills')";
+                        $sql = "INSERT INTO eoi (job_reference, firstname, lastname, dob, gender, address, suburb, state, postcode, email, phone_number) 
+                        VALUES ('$job_reference', '$firstname', '$lastname', '$dob', '$gender', '$address', '$suburb', '$state', '$postcode', '$email', '$phone_number')";
+
+                        if (!mysqli_query($conn, $sql)) {
+                        echo "<p>Database error: " . mysqli_error($conn) . "</p>";
+                        } else {
+
 
                         echo "<h2>Application Submission Successful</h2>";
                         echo "<p>Thank you for your application.</p>";
@@ -168,20 +171,12 @@
                         echo "<h3>Job Details</h3>";
                         echo "<p id='infoname' class='inline-p'>Job Reference Number:</p>  <p class='inline-p'>$job_reference</p><br>";
                         echo "<p id='infoname' class='inline-p'>Skills List:</p><br>";
-                        echo "<ul><li>";
-                        echo implode("<li>", $skills);
-                        echo "</ul>";
-                        echo "<p id='infoname' class='inline-p'>Other Skills:&nbsp;</p>";
-                        if (empty($other_skills)){
-                            echo "<p class='inline-p'>N/A</p><br>";
-                        }
-                        else {
-                            echo "<p class='inline-p'>$other_skills</p><br>";
-                        }
+            
                         
                         echo "<hr>";
                         echo "<p>Any issues? Send us an email at <a href='mailto:info@hogwarts.com'>info@hogwarts.com</a> with your application number and any amendments you would like to make.</p>";
                     }
+                }
                         
                     
                     // If an error has been added to the array, the webpage will list the errors and urge the user to resubmit their application.
@@ -200,7 +195,7 @@
                         
                 } 
                 else 
-                    header('Location: apply.php') // If a user tries to access the webpage when not submitting a form, they will be redirected to apply.php instead.
+                    header('Location: apply.php'); // If a user tries to access the webpage when not submitting a form, they will be redirected to apply.php instead.
 
             ?>
         

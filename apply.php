@@ -85,10 +85,11 @@
                         <br>
 
                     <br>
+                    <!--
                     <fieldset>
                         <legend><strong>Skills List (Tick all that apply):</strong></legend>
                         <label for="teaching">Teaching Qualification</label>
-                        <input type="checkbox" name="skills[]" value="teaching" checked="checked"> <!-- Had to remove ID from each checkbox in order to create an array in process_eoi. -Lachlan -->
+                        <input type="checkbox" name="skills[]" value="teaching" checked="checked"> 
                         <br>
                         <label for="systems">Management Systems Knowledge</label>
                         <input type="checkbox" name="skills[]" value="systems">
@@ -118,7 +119,9 @@
                         <input type="checkbox" name="skills[]" value="other_skills"> 
                         <br>
                         <textarea id="other_skills_text" name="other_skills_text" rows="4" cols="40" placeholder="Enter other relevant skills here..."></textarea> 
-                    </fieldset>
+                    </fieldset> 
+-->
+
                 </fieldset>
                 
                 <input type="submit" value="Register">
