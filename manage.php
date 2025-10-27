@@ -1,20 +1,7 @@
 <?php
     require_once "settings.php";
     session_start();
-
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-    }
-
-    if($username == "Admin" && $password == "Admin"){
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] == $username;
-        header("Location: manage.php");
-        exit;
-    } else {
-        $error = "Invalid username or password.";
-    }
+    
 
     if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         //if not logged in, destory the session and redirect to the login page
