@@ -146,9 +146,9 @@
                     // If the errors array is empty, the webpage will display the information that the user submitted via the form.
                     if (empty($errors)){
 
-                        $sql = "INSERT INTO eoi (first_name, last_name, dob, gender, address, suburb, state, postcode, email, phone, job_reference, skills, other_skills) 
-                        VALUES('$first_name','$$last_name', '$dob', '$gender', '$address', 
-                                '$suburb', '$state', '$postcode', '$email', '$phone', '$job_reference', '$skills, '$other_skills')";
+                        $sql = "INSERT INTO eoi (job_reference, first_name, last_name, dob, gender, street_address, suburb, state, postcode, email, phone, skills, other_skills) 
+                        VALUES('$job_reference', '$first_name','$$last_name', '$dob', '$gender', '$address', 
+                                '$suburb', '$state', '$postcode', '$email', '$phone', '$skills, '$other_skills')";
 
                         echo "<h2>Application Submission Successful</h2>";
                         echo "<p>Thank you for your application.</p>";
