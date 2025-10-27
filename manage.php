@@ -27,6 +27,8 @@
         
         <?php include "header.inc"; ?>
         <h2>Welcome to the Management Page, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+        <p><a href="logout.php">Logout</a></p>
+
         
         <main>
             
