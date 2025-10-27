@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2025 at 01:08 PM
+-- Generation Time: Oct 27, 2025 at 05:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,50 +24,56 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jobs_list`
+-- Table structure for table `eoi`
 --
 
-CREATE TABLE `jobs_list` (
-  `id` int(11) NOT NULL,
-  `title` text DEFAULT NULL,
-  `reference_no` text DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `pay_min` int(11) DEFAULT NULL,
-  `pay_max` int(11) DEFAULT NULL,
-  `responsibility` text DEFAULT NULL,
-  `responsibility_list` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`responsibility_list`)),
-  `qualifications_list` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`qualifications_list`)),
-  `desired_skills_list` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`desired_skills_list`)),
-  `report_line_list` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`report_line_list`))
+CREATE TABLE `eoi` (
+  `job_reference` varchar(5) NOT NULL,
+  `first_name` varchar(20) NOT NULL,
+  `last_name` varchar(20) NOT NULL,
+  `dob` date NOT NULL,
+  `gender` enum('male','female','other','') NOT NULL,
+  `street_address` varchar(40) NOT NULL,
+  `suburb` varchar(40) NOT NULL,
+  `state` enum('VIC','NSW','QLD','TAS','NT','ACT','SA','WA') NOT NULL,
+  `postcode` int(4) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `phone_number` int(12) NOT NULL,
+  `skill_list` enum('Teaching Qualification','Management Systems Knowledge','Technology Expertise','Communication Skills','PL/SQL Proficiency','HTML Proficiency','CSS Proficiency','AWS Database Experience','5+ Years Industry Experience') NOT NULL,
+  `other_skills` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `jobs_list`
+-- Table structure for table `jobs`
 --
 
-INSERT INTO `jobs_list` (`id`, `title`, `reference_no`, `description`, `pay_min`, `pay_max`, `responsibility`, `responsibility_list`, `qualifications_list`, `desired_skills_list`, `report_line_list`) VALUES
-(1, 'Lecturer (Computing & Software Engineering)', 'DLL35', 'The recently established Digital Learning Department at Hogwarts University are seeking an experienced development professional to join their team of dedicated Witches and Wizards in developing platforms to enhance digital learning across the campus. This role seeks to attract those who are confident in their abilities to lead a team in designing new solutions to help our students thrive in this new learning environment.\r\nYou will collaborate with our Software and Engineering department, and contribute to the development of a new era of teaching and learning at Hogwarts.', 46000, 51000, 'As a lecturer at Hogwarts University, your primary responsibilities are as follows:', '[\"Designing and delivering quality lectures.\", \"Conducting tutorials.\", \"Developing relevant curriculums.\", \"Providing academic guidance and mentorship to students.\", \"Contributing to relevant research at Hogwarts and with its collaborators.\"]', '[\"Master’s qualification in Computer Science, Information Techonology or Software Engineering.\", \"Demonstrated proficiency in a range of programming languages.\", \"At least 2 years of relevant industry experience.\"]', '[\"Previous teaching/education qualifications.\", \"Knowledge of learning management systems.\", \"Familiarity with emerging technologies.\", \"Excellent communication and presentation skills.\", \"Familiarity with Hogwarts High School and/or Hogwarts University’s education system.\"]', '[\"Hogwarts Digital Learning Comittee\", \"Head of Teaching and Learning\"]'),
-(2, 'Senior Developer', 'DLD22', 'The recently established Digital Learning Department at Hogwarts University are seeking an experienced development professional to join their team of dedicated Witches and Wizards in developing platforms to enhance digital learning across the campus. This role seeks to attract those who are confident in their abilities to lead a team in designing new solutions to help our students thrive in this new learning environment.\r\nYou will collaborate with our Software and Engineering department, and contribute to the development of a new era of teaching and learning at Hogwarts.', 56000, 60000, 'As a Senior Developer at Hogwarts, your primary responsibilities are as follows:', '[\"Designing and implementing software to support both teaching and learning.\", \"Leading and managing development projects from conception to deployment.\", \"Mentoring junior developers.\", \"Collaborating with IT leadership to align development efforts with institutional goals.\"]', '[\"Demonstrated proficiency in programming with PL/SQL, Javascript, HTML5 and CSS.\", \"Experience with AWS database services such as RDS, DynamoDB or Aurora.\", \"At least 5 years of relevant industry experience.\"]', '[\"Previous excperience in industry-based mentoring.\", \"Strong and analytical  problem solving abilities.\", \"Knowledge of learning management systems.\", \"Familiarity with emerging technologies.\", \"Excellent communication and presentation skills.\", \"Familiarity with Hogwarts High School and/or Hogwarts University’s education system.\"]', '[\"Hogwarts Digital Learning Comittee\", \"Director of IT\"]');
+CREATE TABLE `jobs` (
+  `job_reference` varchar(5) NOT NULL,
+  `title` varchar(40) NOT NULL,
+  `description` text NOT NULL,
+  `salary` int(20) NOT NULL,
+  `reporting_line` text NOT NULL,
+  `key_responsibilities` text NOT NULL,
+  `requirements` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `jobs_list`
+-- Indexes for table `eoi`
 --
-ALTER TABLE `jobs_list`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `eoi`
+  ADD PRIMARY KEY (`job_reference`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexes for table `jobs`
 --
-
---
--- AUTO_INCREMENT for table `jobs_list`
---
-ALTER TABLE `jobs_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`job_reference`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

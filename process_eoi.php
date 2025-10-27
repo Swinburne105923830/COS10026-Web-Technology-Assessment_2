@@ -63,7 +63,7 @@
                     $email = clean_input($_POST["email"]);
                     $phone = clean_input($_POST["phone"]);
                     $job_reference = clean_input($_POST["job_reference"]);
-                    $skills = ($_POST["skills"]);
+                    $skills = isset($_POST["skills"]) ? $_POST["skills"] : []; //Made sure atleast one box needs to be selected
                     $other_selected = false;
                     $other_skills_text = clean_input($_POST["other_skills_text"]);
 
