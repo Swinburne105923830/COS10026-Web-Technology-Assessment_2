@@ -25,15 +25,12 @@
     <body>
         
         <?php include "header.inc"; ?>
+        <h2>Welcome to the Management Page, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
         
         <main>
             
     
             <?php
-
-                require_once "settings.php";
-                session_start();
-
                 function clean_input($data) {
                 $data = trim($data);
                 $data = stripslashes($data);

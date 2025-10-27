@@ -1,4 +1,20 @@
 <?php
+    session_start();
+
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+    }
+
+    if($username === "Admin" && $_password === "Admin"){
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+        header("Location: manage.php");
+        exit;
+    } else {
+        $error = "Invalid username or password.";
+    }
+
     function clean_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
