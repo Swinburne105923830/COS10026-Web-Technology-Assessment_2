@@ -12,7 +12,6 @@
     <body>
         
         <?php include "header.inc" ?>
-        <?php include "nav.inc" ?>
         
         <main>
         <h1 class="apply_heading">Application Page for Hogwarts School of Witchcraft and Wizardry</h1>
@@ -85,11 +84,11 @@
                         <br>
 
                     <br>
-                    <!--
+                    
                     <fieldset>
                         <legend><strong>Skills List (Tick all that apply):</strong></legend>
                         <label for="teaching">Teaching Qualification</label>
-                        <input type="checkbox" name="skills[]" value="teaching" checked="checked"> 
+                        <input type="checkbox" name="skills[]" value="teaching"> 
                         <br>
                         <label for="systems">Management Systems Knowledge</label>
                         <input type="checkbox" name="skills[]" value="systems">
