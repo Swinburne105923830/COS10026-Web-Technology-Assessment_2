@@ -22,19 +22,19 @@
                     <fieldset>
                         <legend><strong>Personal Details</strong></legend>
                         <label for="firstname">First Name:</label>
-                        <input type="text" id="firstname" name="firstname" maxlength="20" pattern="[a-zA-Z]+" required>
+                        <input type="text" id="firstname" name="firstname">
                         <br>
                         <label for="lastname">Last Name:</label>
-                        <input type="text" id="lastname" name="lastname" maxlength="20" pattern="[a-zA-Z]+" required>
+                        <input type="text" id="lastname" name="lastname">
                         <br>
                         <label for="dob">Date of Birth:</label>
-                        <input type="date" id="dob" name="dob" required>
+                        <input type="date" id="dob" name="dob">
                         <br>
                         
                         <br>
                         <fieldset>
                             <legend>Gender</legend>
-                            <input type="radio" id="male" name="gender" value="male" checked="checked" required>
+                            <input type="radio" id="male" name="gender" value="male" checked="checked">
                             <label for="male">Male</label>
                             <input type="radio" id="female" name="gender" value="female">
                             <label for="female">Female</label>
@@ -44,13 +44,13 @@
                         <br>
 
                         <label for="address">Street Address:</label>
-                        <input type="text" id="address" name="address" maxlength="40" required>
+                        <input type="text" id="address" name="address">
                         <label for="suburb">Suburb/Town:</label>
-                        <input type="text" id="suburb" name="suburb" maxlength="40" required>
+                        <input type="text" id="suburb" name="suburb">
                         <br>
 
                         <label for="state">State:</label>
-                        <select id="state" name="state" required>
+                        <select id="state" name="state">
                             <option value="">Please Select State</option>
                             <option value="vic">VIC</option>
                             <option value="nsw">NSW</option>
@@ -63,17 +63,17 @@
                         </select>
                         <br>
                         <label for="postcode">Postcode:</label>
-                        <input type="text" id="postcode" name="postcode" pattern="\d{4}" required>
+                        <input type="text" id="postcode" name="postcode">
                         <br>
 
                         <br>
                         <label><strong>Contact Information:</strong></label>
                         <br>
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email">
                         <br>
                         <label for="phone">Phone:</label>
-                        <input type="text" id="phone" name="phone" pattern="\d{8,12}"required>
+                        <input type="text" id="phone" name="phone">
                         <br>
                     </fieldset>
                     <fieldset>

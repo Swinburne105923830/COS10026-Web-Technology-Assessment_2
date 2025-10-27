@@ -99,7 +99,7 @@
                         $errors[] = "<p>Address entry is required</p>";
                     elseif (!preg_match("/^[a-zA-Z0-9-' ]*$/",$address)) // Entry can only contain letters, numbers, white space and cetrain special characters.
                         $errors[] = "<p>Address can only contain letters, numbers and white space.</p>";
-                    elseif (mb_strlen($address) > 40) // Entry must be 20 characters or less.
+                    elseif (mb_strlen($address) > 40) // Entry must be 40 characters or less.
                         $errors[] = "<p>Address must be 40 characters or less.<p>";
 
                     if (empty($suburb))

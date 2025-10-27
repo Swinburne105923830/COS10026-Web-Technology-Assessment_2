@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2025 at 04:36 AM
+-- Generation Time: Oct 27, 2025 at 03:06 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,23 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eoi`
+-- Table structure for table `jobs`
 --
 
-CREATE TABLE `eoi` (
+CREATE TABLE `jobs` (
   `job_reference` varchar(5) NOT NULL,
-  `first_name` varchar(20) NOT NULL,
-  `last_name` varchar(20) NOT NULL,
-  `dob` date NOT NULL,
-  `gender` enum('male','female','other','') NOT NULL,
-  `street_address` varchar(40) NOT NULL,
-  `suburb` varchar(40) NOT NULL,
-  `state` enum('VIC','NSW','QLD','TAS','NT','ACT','SA','WA') NOT NULL,
-  `postcode` int(4) NOT NULL,
-  `email` varchar(40) NOT NULL,
-  `phone_number` int(12) NOT NULL,
-  `skill_list` enum('Teaching Qualification','Management Systems Knowledge','Technology Expertise','Communication Skills','PL/SQL Proficiency','HTML Proficiency','CSS Proficiency','AWS Database Experience','5+ Years Industry Experience') NOT NULL,
-  `other_skills` tinyint(1) NOT NULL
+  `title` varchar(40) NOT NULL,
+  `description` text NOT NULL,
+  `salary` int(20) NOT NULL,
+  `reporting_line` text NOT NULL,
+  `key_responsibilities` text NOT NULL,
+  `requirements` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -48,9 +42,9 @@ CREATE TABLE `eoi` (
 --
 
 --
--- Indexes for table `eoi`
+-- Indexes for table `jobs`
 --
-ALTER TABLE `eoi`
+ALTER TABLE `jobs`
   ADD PRIMARY KEY (`job_reference`);
 COMMIT;
 

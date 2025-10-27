@@ -44,11 +44,10 @@
         <br>
 
         <div class="profile-container">
+
           <?php 
-           $host = "localhost";
-  $user = "root"; 
-  $pwd = "";
-  $sql_db = "member_contribution";
+          require_once "settings.php";
+    
             try {
               $pdo = new PDO("mysql:host=$host;dbname=$sql_db", $user, $pwd);
               $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
