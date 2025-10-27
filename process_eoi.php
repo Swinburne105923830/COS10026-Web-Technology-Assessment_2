@@ -1,3 +1,26 @@
+
+
+            <?php
+                require_once "settings.php";
+                session_start();
+                include "header.inc";
+                include "nav.inc";
+
+                function clean_input($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+                }
+
+                $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+                ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,31 +42,10 @@
             }
         </style>
     </head>
-
     <body>
-
-        <?php include "header.inc" ?>
-        <?php include "nav.inc" ?>
-
         <main>
-
-            <?php
-                require_once "settings.php";
-                session_start();
-
-                function clean_input($data) {
-                $data = trim($data);
-                $data = stripslashes($data);
-                $data = htmlspecialchars($data);
-                return $data;
-                }
-
-                $conn = mysqli_connect($host, $user, $pwd, $sql_db);
-
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
+    
+    <?php
 
                 // If the webpage is accessed through posting an HTML form.
                 if ($_SERVER["REQUEST_METHOD"] == "POST") { 
@@ -143,6 +145,11 @@
 
                     // If the errors array is empty, the webpage will display the information that the user submitted via the form.
                     if (empty($errors)){
+
+                        $sql = "INSERT INTO eoi (first_name, last_name, dob, gender, address, suburb, state, postcode, email, phone, job_reference, skills, other_skills) 
+                        VALUES('$first_name','$$last_name', '$dob', '$gender', '$address', 
+                                '$suburb', '$state', '$postcode', '$email', '$phone', '$job_reference', '$skills, '$other_skills')";
+
                         echo "<h2>Application Submission Successful</h2>";
                         echo "<p>Thank you for your application.</p>";
                         echo "<p>Before exiting, please confirm that the details you provided are correct.</p>";
