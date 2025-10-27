@@ -32,7 +32,6 @@
     <body>
         
         <?php include "header.inc" ?>
-        <?php include "nav.inc" ?>
 
         <main>
 
@@ -64,7 +63,7 @@
             <?php include "settings.php";
             $dbconn = mysqli_connect($host, $user, $pwd, $sql_db);
             if ($dbconn) {
-                $query = "SELECT * FROM jobs";
+                $query = "SELECT * FROM jobs_list";
                 $result = mysqli_query($dbconn, $query);
                 if (!$result) {
                     echo "<p>There are no jobs to display.";

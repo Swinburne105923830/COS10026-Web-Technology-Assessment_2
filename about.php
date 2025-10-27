@@ -13,7 +13,6 @@
 <body>
     
   <?php include "header.inc" ?>
-  <?php include "nav.inc" ?>
 
   <main>
       <h2>About Us</h2>
