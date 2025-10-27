@@ -22,7 +22,6 @@
     <body>
         
         <?php include "header.inc"; ?>
-        <?php include "nav.inc"; ?>
         <main>
             <h2>Management Login:</h2>
             <form action="manage.php" method="post" novalidate="novalidate">
