@@ -12,7 +12,6 @@
     <body>
         
         <?php include "header.inc" ?>
-        <?php include "nav.inc" ?>
         
         <main>
         <h1 class="apply_heading">Application Page for Hogwarts School of Witchcraft and Wizardry</h1>
