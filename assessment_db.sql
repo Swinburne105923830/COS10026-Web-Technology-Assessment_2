@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2025 at 01:38 PM
+-- Generation Time: Oct 27, 2025 at 01:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `assessment_db`
 --
+CREATE DATABASE IF NOT EXISTS `assessment_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `assessment_db`;
 
 -- --------------------------------------------------------
 
@@ -30,11 +32,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `eoi` (
   `applicant_id` int(11) NOT NULL,
   `job_reference` varchar(5) NOT NULL,
-  `first_name` varchar(20) NOT NULL,
-  `last_name` varchar(20) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
   `dob` date NOT NULL,
   `gender` enum('male','female','other','') NOT NULL,
-  `street_address` varchar(40) NOT NULL,
+  `address` varchar(40) NOT NULL,
   `suburb` varchar(40) NOT NULL,
   `state` enum('VIC','NSW','QLD','TAS','NT','ACT','SA','WA') NOT NULL,
   `postcode` int(4) NOT NULL,
