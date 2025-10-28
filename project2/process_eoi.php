@@ -2,6 +2,11 @@
 require_once "settings.php";
 session_start();
 
+/*
+Function to clean user inputs.
+Removes certain unnecessary special characters and white spaces.
+Converts all special characters to HTML entities, preventing SQL and PHP code from being entered.
+*/
 function clean_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -11,7 +16,7 @@ function clean_input($data) {
 
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
-// Check connection
+// If connection to database fails, exit and display error.
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -55,14 +60,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Convert checkbox array to string
     $skills = isset($_POST["skills"]) ? implode(", ", array_map('clean_input', $_POST["skills"])) : "";
 
+    // Collect any errors from application submission
     $errors = [];
 
     // Validation
-    if (empty($firstname))
-        $errors[] = "<p>First Name is required.</p>";
-    elseif (!preg_match("/^[a-zA-Z-' ]*$/", $firstname))
+    if (empty($firstname)) //If the input is empty.
+        $errors[] = "<p>First Name is required.</p>"; //Add to error message to errors array.
+    elseif (!preg_match("/^[a-zA-Z-' ]*$/", $firstname)) //If the input doesn't match validation requirements.
         $errors[] = "<p>First Name can only contain letters and white space.</p>";
-    elseif (mb_strlen($firstname) > 20)
+    elseif (mb_strlen($firstname) > 20) //If the input is greater than the string limit.
         $errors[] = "<p>First Name must be 20 characters or less.</p>";
 
     if (empty($lastname))

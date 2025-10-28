@@ -50,13 +50,13 @@
 
             <?php include "settings.php";
             $dbconn = mysqli_connect($host, $user, $pwd, $sql_db);
-            if ($dbconn) {
-                $query = "SELECT * FROM jobs";
+            if ($dbconn) { //If the database connects...
+                $query = "SELECT * FROM jobs"; //Get all columns from the jobs table.
                 $result = mysqli_query($dbconn, $query);
-                if (!$result) {
+                if (!$result) { //Display if there are no entries.
                     echo "<p>There are no jobs to display.";
                 } else {
-                    while ($row = mysqli_fetch_assoc($result)) {
+                    while ($row = mysqli_fetch_assoc($result)) { //If there are entries, display each job in this format.
                         echo "<section id=" . $row['reference_no'] . ">";
                         echo "<h4>" . $row['title'] . "</h4>";
                         echo "<p><strong>Job Reference No. - " . $row['reference_no'] ."</strong></p>";
@@ -68,9 +68,10 @@
                         
                         $responsibilities = json_decode($row['responsibility_list'], true);
 
-                        if (is_array($responsibilities)) {
-                            foreach ($responsibilities as $item) {
-                                echo "<li>" . htmlspecialchars($item) . "</li>";
+                        //Allows the job responsibilities to be displayed dynamically for any job.
+                        if (is_array($responsibilities)) { //If the responsibilities column is stored as an array...
+                            foreach ($responsibilities as $item) { //Store each array item as $item.
+                                echo "<li>" . htmlspecialchars($item) . "</li>"; //List each responsibility.
                             }
                         } else {
                             echo "<li>No responsibilities listed.</li>";
@@ -83,6 +84,7 @@
 
                         $qualifications = json_decode($row['qualifications_list'], true);
 
+                        //Displays qualifications dynamically.
                         if (is_array($qualifications)) {
                             foreach ($qualifications as $item) {
                                 echo "<li>" . htmlspecialchars($item) . "</li>";
@@ -97,6 +99,7 @@
 
                         $desired_skills = json_decode($row['desired_skills_list'], true);
 
+                        //Displays desired skills dynamically.
                         if (is_array($desired_skills)) {
                             foreach ($desired_skills as $item) {
                                 echo "<li>" . htmlspecialchars($item) . "</li>";
@@ -113,6 +116,7 @@
 
                         $report_line = json_decode($row['report_line_list'], true);
 
+                        //Displays report line dynamically.
                         if (is_array($report_line)) {
                             foreach ($report_line as $item) {
                                 echo "<li>" . htmlspecialchars($item) . "</li>";
