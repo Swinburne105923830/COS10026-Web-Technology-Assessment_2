@@ -50,8 +50,8 @@ if (isset($_POST['update_status_id']) && isset($_POST['new_status'])) {
 <body>
 
 <?php include "header.inc"; ?>
-<h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
-<p><a href="logout.php">Logout</a></p>
+<h2> Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+<p><a href="logout.php" id="logout"> Logout</a></p>
 
 <main>
     <h2>EOI Management</h2>
