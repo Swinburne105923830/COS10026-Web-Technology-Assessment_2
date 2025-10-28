@@ -59,20 +59,17 @@ body {
 }
 
 header {
-    background-color:var(--accent-color);
-    background: radial-gradient(#2c364d, #001a35);
-    box-shadow:
-        inset 0px -15px 20px -20px #000000,
-        0px 3px 3px #b4820c,
-        0px 7px #ffd66e,
-        0px 7px 15px black;
-
-    width: calc(100dvw - 40px); /* Remove 20px either side for padding*/
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    padding: 20px;
-    
+  display: flex;
+  flex-direction: column; /* stack content vertically */
+  align-items: center;    /* center h1 and nav horizontally */
+  padding: 20px;
+  background-color: var(--accent-color);
+  background: radial-gradient(#2c364d, #001a35);
+  box-shadow:
+    inset 0px -15px 20px -20px #000000,
+    0px 3px 3px #b4820c,
+    0px 7px #ffd66e,
+    0px 7px 15px black;
 }
 
 header div {
@@ -90,14 +87,16 @@ header h1 {
     margin: 0;
 }
 
-/*Navigation Bar Styling*/
-/* Converts list horizontally to create navigation bar*/
+/*NAVIGATION BAR FOR ALL PAGES*/
 nav ul {
-    color: var(--text-color);
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    column-gap: 4rem;
-    list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center normal links */
+  list-style: none;
+  gap: 4rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 /*Nav buttons*/
@@ -107,12 +106,6 @@ nav a {
     font-weight: 800;
     font-size: 1.4rem;
     letter-spacing: 0.2em;
-}
-
-/*Spacing for the login button on the nav*/
-nav a #login_nav {
-    display: grid;
-    justify-self: end;
 }
 
 nav li:hover {
@@ -130,7 +123,8 @@ ul ul {
 .page_home #nav_home,
 .page_apply #nav_apply,
 .page_about #nav_about,
-.page_jobs #nav_jobs {
+.page_jobs #nav_jobs,
+.page_login #nav_login {
   color: rgb(255, 201, 39);
   border-radius: 4px;
 }
