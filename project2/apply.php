@@ -85,6 +85,7 @@
                     <br>
                     
                     <fieldset>
+                        <!-- Removed ID from each checkbox to properly insert them into an array in process_eoi -->
                         <legend><strong>Skills List (Tick all that apply):</strong></legend>
                         <label for="teaching">Teaching Qualification</label>
                         <input type="checkbox" name="skills[]" value="teaching"> 
@@ -118,7 +119,7 @@
                         <br>
                         <textarea id="other_skills_text" name="other_skills_text" rows="4" cols="40" placeholder="Enter other relevant skills here..."></textarea> 
                     </fieldset> 
--->
+
 
                 </fieldset>
                 

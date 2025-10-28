@@ -53,8 +53,8 @@
               $stmt = $pdo->query("SELECT * FROM member_contributions ORDER BY name");
               $members = $stmt->fetchAll(PDO::FETCH_ASSOC);
               
-              if(count($members) > 0) {
-                  foreach($members as $member) {
+              if(count($members) > 0) { //If the number of members is greater than zero...
+                  foreach($members as $member) { //For each member entry, add member info (profile image, name, ID, contributions)
                       echo '
                       <div class="profile">
                         <img src="images/' . htmlspecialchars($member['profile_image']) . '" alt="profile_pic_' . htmlspecialchars($member['name']) . '" class="profile_pic">
@@ -70,10 +70,10 @@
                       </div>';
                   }
               } else {
-                  echo '<p>No team members found in database.</p>';
+                  echo '<p>No team members found in database.</p>'; //Display if no team members found.
               }
           } catch(PDOException $e) {
-              echo "<p>Error loading team members: " . $e->getMessage() . "</p>";
+              echo "<p>Error loading team members: " . $e->getMessage() . "</p>"; //Display if there is an error fetching data.
           }
           ?>
         </div>
@@ -91,9 +91,9 @@
           <?php
           // Display fun facts from database
           try {
-              $stmt = $pdo->query("SELECT name, fun_fact FROM member_contributions ORDER BY name");
+              $stmt = $pdo->query("SELECT name, fun_fact FROM member_contributions ORDER BY name"); //Takes the name and fun fact from 'member_contributions' table and orders by name.
               $hasData = false;
-              while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              while($row = $stmt->fetch(PDO::FETCH_ASSOC)) { //If it finds the rows, hasData is set to true, names and fun facts are displayed in a table.
                   $hasData = true;
                   echo '
                   <tr>
@@ -101,7 +101,7 @@
                     <td>' . htmlspecialchars($row['fun_fact']) . '</td>
                   </tr>';
               }
-              if(!$hasData) {
+              if(!$hasData) { //If has data is false, display table with no fun facts.
                   echo '<tr><td colspan="2">No fun facts available</td></tr>';
               }
           } catch(PDOException $e) {
