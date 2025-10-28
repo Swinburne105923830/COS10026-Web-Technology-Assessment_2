@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2025 at 01:54 PM
+-- Generation Time: Oct 28, 2025 at 02:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,8 +43,17 @@ CREATE TABLE `eoi` (
   `email` varchar(40) NOT NULL,
   `phone_number` int(12) NOT NULL,
   `skills` enum('Teaching Qualification','Management Systems Knowledge','Technology Expertise','Communication Skills','PL/SQL Proficiency','HTML Proficiency','CSS Proficiency','AWS Database Experience','5+ Years Industry Experience') NOT NULL,
-  `other_skills` tinyint(1) NOT NULL
+  `other_skills` tinyint(1) NOT NULL,
+  `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `eoi`
+--
+
+INSERT INTO `eoi` (`applicant_id`, `job_reference`, `firstname`, `lastname`, `dob`, `gender`, `address`, `suburb`, `state`, `postcode`, `email`, `phone_number`, `skills`, `other_skills`, `status`) VALUES
+(2, 'DLL35', 'Jacob', 'Grant', '2025-09-03', 'female', '174 Brysons Road', 'Wonga Park', 'VIC', 3115, 'jacobg46@hotmail.com', 930492093, '', 0, ''),
+(3, 'DLL35', 'Nick', 'Bill', '2025-09-03', 'female', '174 Brysons Road', 'Wonga Park', 'WA', 3115, 'jacobg46@hotmail.com', 930492093, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -132,7 +141,7 @@ ALTER TABLE `member_contributions`
 -- AUTO_INCREMENT for table `eoi`
 --
 ALTER TABLE `eoi`
-  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `member_contributions`

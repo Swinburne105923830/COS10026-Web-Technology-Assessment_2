@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // --- If No Errors ---
     if (empty($errors)) {
         $sql = "INSERT INTO eoi (job_reference, firstname, lastname, dob, gender, address, suburb, state, postcode, email, phone_number, skills)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "ssssssssssss", 
