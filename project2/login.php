@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Management Login</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
+<body class="page_login">
     <?php include "header.inc"; ?>
 
     <main>

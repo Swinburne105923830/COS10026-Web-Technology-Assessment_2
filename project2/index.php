@@ -7,19 +7,8 @@
     <meta name="keywords" content="HTML, Home, Hogwarts">
     <meta name="author" content="Jacob Grant">
     <title>Home Page</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <style>  
-        .slogan {
-            font-family: 'Italianno', cursive;
-            font-size: 1.8rem;
-            color: #ffd66e;
-            text-align: center;
-            margin-top: 5px;
-            text-shadow: 0 0 5px #000000;
-        }
-    </style>
 </head>
-<body>
+<body class="page_home">
     
     <?php include "header.inc" ?>
 

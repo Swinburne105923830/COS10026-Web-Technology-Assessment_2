@@ -7,10 +7,9 @@
     <meta name="keywords" content="HTML, About, Hogwarts">
     <meta name="author" content="Jacob Grant">
     <title>About Page</title>
-    <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" type="image/x-icon" href="/images/Hogwarts-Crest.png">
 </head>
-<body>
+<body class="page_about">
     
   <?php include "header.inc" ?>
 

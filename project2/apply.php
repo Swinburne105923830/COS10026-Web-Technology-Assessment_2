@@ -7,9 +7,8 @@
         <meta name="keywords" content="HTML, Application, Form, Hogwarts">
         <meta name="author" content="Jacob Grant">
         <title>Apply Page</title>
-        <link rel="stylesheet" href="styles/style.css">
     </head>
-    <body>
+    <body class="page_apply">
         
         <?php include "header.inc" ?>
         

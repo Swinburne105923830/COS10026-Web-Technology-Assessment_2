@@ -29,7 +29,7 @@
         </style>
     </head>
 
-    <body>
+    <body class="page_jobs">
         
         <?php include "header.inc" ?>
 
@@ -46,20 +46,8 @@
             </aside>
 
             <h3>Available Digital Learning Jobs:</h3>
-            <h4>(Click job title to jump to job descriptions)</h4>
-
-            <div class="job_description_quicklinks">
-                <ul>
-                    <li><strong><a href="#lecturer">Lecturer</a></strong></li>
-                    <li><strong><a href="#senior_developer">Senior Developer</a></strong></li>
-                </ul>
-            </div>
-
-            <br>
-            <br>
             <hr>
 
-            
             <?php include "settings.php";
             $dbconn = mysqli_connect($host, $user, $pwd, $sql_db);
             if ($dbconn) {
