@@ -76,7 +76,7 @@
                     </fieldset>
                     <fieldset>
                         <legend><strong>Job Details</strong></legend>
-                        <p><em>Please read full job description on <strong><a href="jobs.html">Jobs Page</a></strong> before applying to role</em></p>
+                        <p><em>Please read full job description on <strong><a href="jobs.php">Jobs Page</a></strong> before applying to role</em></p>
                         <br>
                         <label for="job_reference">Job Reference Number:</label>
                         <input type="text" id="job_reference" name="job_reference" pattern="[a-zA-Z\d]{5}" required>
