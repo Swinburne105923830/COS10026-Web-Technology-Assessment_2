@@ -8,12 +8,13 @@
         <nav>
             <ul>
                 <li><a href="index.php" id="nav_home">Home</a></li>
+                <li><a href="about.php" id="nav_about">About</a></li>
                 <li><a href="jobs.php" id="nav_jobs">Jobs</a></li>
                 <li><a href="apply.php" id="nav_apply">Apply</a></li>
-                <li><a href="about.php" id="nav_about">About</a></li>
-                <li><a href="login.php" id="nav_login">Login</a></li>
+                <li><a href="login.php" id="login_nav">Login</a></li>
             </ul>
         </nav>
+
 
         <link rel="stylesheet" href="styles/style.css">
         <style>  

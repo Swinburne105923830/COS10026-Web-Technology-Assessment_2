@@ -3,9 +3,10 @@ filename:[style.css]
 author:[Damian & Jacob]
 created:[9/9/2025]
 last modified:[28/10/2025]
-description:[CSS styling for index.php, about.php, jobs.php and apply.php]
+description:[CSS styling for index.html, about.html, jobs.html, apply.html and login.html]
 */
-/*Background Image for Index Page*/
+
+/* ====== BACKGROUND IMAGE ====== */
 body {
   background-image: url("../images/hogwarts.jpg");
   background-size: cover; 
@@ -14,54 +15,56 @@ body {
   margin: 0; 
 }
 
+/* ====== FONTS ====== */
+@font-face {
+  font-family: 'Cinzel';
+  src: url(./fonts/Cinzel-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: 'Felipa';
+  src: url(./fonts/Felipa-Regular.ttf);
+}
+@font-face {
+  font-family: 'Italianno';
+  src: url(./fonts/Italianno-Regular.ttf);
+}
 
-@font-face {
-    font-family: 'Cinzel';
-    src: url(./fonts/Cinzel-VariableFont_wght.ttf);
-}
-@font-face {
-    font-family: 'Felipa';
-    src: url(./fonts/Felipa-Regular.ttf);
-}
-
-@font-face {
-    font-family: 'Italianno';
-    src: url(./fonts/Italianno-Regular.ttf);
-}
 :root {
-    --text-color: #000000;
-    --background-color: #c2a67c;
-    --accent-color: #002248;
-    --main-text-family: 'Felipa', serif;
-    --heading-font-family: 'Cinzel',serif;
+  --text-color: #000000;
+  --background-color: #c2a67c;
+  --accent-color: #002248;
+  --main-text-family: 'Felipa', serif;
+  --heading-font-family: 'Cinzel', serif;
 }
 
+/* ====== GLOBAL TEXT ====== */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--heading-font-family);
+  font-family: var(--heading-font-family);
 }
 
 body {
-    font-family: var(--main-text-family);
-
-    background-color: #dbc497;
-    background-image: linear-gradient(
-        90deg,
-        #9c5d3b  00%,
-        #d1a265  05%,
-        #dfcda8  30%,
-        #dfcda8  80%,
-        #d1a265  95%,
-        #9c5d3b 100%);
-    font-size: 20px;
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
+  font-family: var(--main-text-family);
+  background-color: #dbc497;
+  background-image: linear-gradient(
+    90deg,
+    #9c5d3b  00%,
+    #d1a265  05%,
+    #dfcda8  30%,
+    #dfcda8  80%,
+    #d1a265  95%,
+    #9c5d3b 100%
+  );
+  font-size: 20px;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
 }
 
+/* ====== HEADER ====== */
 header {
   display: flex;
-  flex-direction: column; /* stack content vertically */
-  align-items: center;    /* center h1 and nav horizontally */
+  flex-direction: column; /* stack title above nav */
+  align-items: center;
   padding: 20px;
   background-color: var(--accent-color);
   background: radial-gradient(#2c364d, #001a35);
@@ -73,53 +76,72 @@ header {
 }
 
 header div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
 }
 
 header h1 {
-    color: #ffd66e;
-    font-weight: 700;
-    text-align: center;
-    text-shadow: #000000 0.1rem 0.1rem 5px;
-    margin: 0;
+  color: #ffd66e;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: #000000 0.1rem 0.1rem 5px;
+  margin: 0;
 }
 
-/*NAVIGATION BAR FOR ALL PAGES*/
+/* ====== NAVIGATION BAR ====== */
 nav ul {
   display: flex;
   align-items: center;
-  justify-content: center; /* center normal links */
+  justify-content: center; /* center main links */
   list-style: none;
-  gap: 4rem;
+  width: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
+  gap: 4rem;
+  position: relative;
 }
 
-/*Nav buttons*/
+/* Nav links */
 nav a {
-    text-decoration: none;
-    color: white;
-    font-weight: 800;
-    font-size: 1.4rem;
-    letter-spacing: 0.2em;
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  transition: transform 0.1s, color 0.3s;
 }
 
+/* Hover scale */
 nav li:hover {
-    transition-property: transform;
-    transition-duration: 0.1s;
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
-ul ul {
-    list-style-type: square;
-    color:#002248;
+/* Push login link to right */
+nav li:last-child {
+  margin-left: auto;
 }
 
-/* Active link styles depending on the page */
+/* Login button */
+#login_nav {
+  padding: 0.5em 1em;
+  background-color: #ffd66e;
+  color: #001a35;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255, 214, 110, 0.6);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.4s;
+}
+
+#login_nav:hover {
+  background-color: #b4820c;
+  color: #ffffff;
+  box-shadow: 0 0 20px 4px rgba(255, 214, 110, 0.9),
+              0 0 40px 10px rgba(255, 214, 110, 0.5);
+}
+
+/* Active link highlight */
 .page_home #nav_home,
 .page_apply #nav_apply,
 .page_about #nav_about,
@@ -129,190 +151,187 @@ ul ul {
   border-radius: 4px;
 }
 
+/* ====== CONTENT ELEMENTS ====== */
 .about_heading {
-    text-align:center;
+  text-align: center;
 }
 
-/*Hogwarts Crest Logo Sizing*/
+/* Logo */
 .logo {
-    height: 100px;
+  height: 100px;
 }
 
-/*Team Photo*/
+/* Team Photo */
 #team_pic {
-    background-image: url("../images/teamphoto.jpg");
-    display: block;
-    margin:0 auto;
-    padding:50px;
-    height: 400px;
-    width: 600px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 12px;
-    border: 4px solid #2c364d;
-    transition-property: transform;
-    transition: background-image 5s;
+  background-image: url("../images/teamphoto.jpg");
+  display: block;
+  margin: 0 auto;
+  padding: 50px;
+  height: 400px;
+  width: 600px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  border: 4px solid #2c364d;
+  transition-property: transform;
+  transition: background-image 5s;
 }
-
 #team_pic:hover {
-    background-image: url("../images/teamphoto_wizardedit.png");
+  background-image: url("../images/teamphoto_wizardedit.png");
 }
-
 #team_pic:active {
-    background-image: url("../images/animated_wizard_teamphoto.png");
+  background-image: url("../images/animated_wizard_teamphoto.png");
 }
 
+/* Team Profiles */
 .profile-container {
   display: flex;
-  gap: 50px; /* Space between profiles */
-  justify-content: center; /* Center all profiles */
-  flex-wrap: wrap; /* Allows wrapping on small screens */
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 20px;
 }
-
 .profile {
   color: white;
   padding: 15px;
   text-align: center;
-  width: 180px; 
-  background-color:var(--accent-color);
-    background: radial-gradient(#2c364d, #001a35);
+  width: 180px;
+  background: radial-gradient(#2c364d, #001a35);
   border-radius: 16px;
 }
-
 .profile_pic {
-  width: 100;
+  width: 100px;
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 10px;
 }
 
+/* Main Content */
 main {
-    margin: 60px 80px;
+  margin: 60px 80px;
 }
 
-
+/* Company Details */
 .company-details {
-    background-color: rgba(255, 188, 94, 0.85);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    max-width: 900px;
-    margin: 0 auto 60px auto;
-    line-height: 1.6;
+  background-color: rgba(255, 188, 94, 0.85);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  line-height: 1.6;
 }
-
 .company-details h2 {
-    color: var(--accent-color);
-    margin-bottom: 15px;
-    text-align: center;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  text-align: center;
 }
-
 .company-details p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    text-align: justify;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  text-align: justify;
 }
 
+/* Castle Image */
 .castle-image {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin: 0 auto;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
+/* Announcements */
 .announcements {
-    background-color: rgba(255, 188, 94, 0.85);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  background-color: rgba(255, 188, 94, 0.85);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+/* Apply Page Heading */
 .apply_heading {
-    text-align: center;
+  text-align: center;
 }
 
+/* Tables */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #f3c774;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f3c774;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
-
 th {  
-background-color: #d19b06;
-    color: #140077d8;
-    text-align: left;
+  background-color: #d19b06;
+  color: #140077d8;
+  text-align: left;
 }
 td {
-    padding: 15px;
-    text-align: left;
-    font-size: 20px;
-    border-radius: 8px;
+  padding: 15px;
+  text-align: left;
+  font-size: 20px;
+  border-radius: 8px;
+}
+table, th, td {
+  border: solid rgb(104, 52, 0);
 }
 
+/* ====== FOOTER ====== */
 footer {
-    background-color: var(--accent-color);
-    background: linear-gradient(90deg, #2c364d, #001a35);
-    color: #ffffff;
-    text-align: center;
-    padding: 20px;
-    font-size: 0.95rem;
-    box-shadow:
-        inset 0px 15px 20px -20px #000000,
-        0px -3px 3px #ffd66e,
-        0px -7px #b4820c,
-        0px -7px 15px black;
+  background-color: var(--accent-color);
+  background: linear-gradient(90deg, #2c364d, #001a35);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.95rem;
+  box-shadow:
+    inset 0px 15px 20px -20px #000000,
+    0px -3px 3px #ffd66e,
+    0px -7px #b4820c,
+    0px -7px 15px black;
 }
-
 footer a {
-    color: #ffd66e;
-    text-decoration: none;
-    margin: 0 8px;
-    font-weight: bold;
+  color: #ffd66e;
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: bold;
 }
-
 footer a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-
 nav a:focus, footer a:focus {
-    outline: 2px dashed #ffd66e;
-    outline-offset: 4px;
+  outline: 2px dashed #ffd66e;
+  outline-offset: 4px;
 }
 
+/* ====== FORMS ====== */
 fieldset {
-    border: 2px solid var(--text-color);
+  border: 2px solid var(--text-color);
 }
-
 dt {
-    font-weight: bold;
-    margin-top: 10px;
+  font-weight: bold;
+  margin-top: 10px;
 }
 dd {
-    margin: 0;
+  margin: 0;
 }
 
-table, th, td {
-    border: solid rgb(104, 52, 0);
-}
-
-/*Creates hover effect on form input text&email boxes*/
-form input[type="text"]:hover, form input[type="email"]:hover{
-    background-color:rgb(175, 0, 0);
-    color:#d19b06;
-    transition: color 0.3s;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    font-weight:bold;
-    color: white;
-    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+/* Hover effect for form input boxes */
+form input[type="text"]:hover, 
+form input[type="email"]:hover {
+  background-color: rgb(175, 0, 0);
+  color: #d19b06;
+  transition: color 0.3s;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
