@@ -8,7 +8,7 @@ description:[CSS styling for index.html, about.html, jobs.html, apply.html and l
 
 /* ====== BACKGROUND IMAGE ====== */
 body {
-  background-image: url("../images/hogwarts.jpg");
+  background-image: url("images/hogwarts.jpg");
   background-size: cover; 
   background-position: center; 
   height: 100vh; 
@@ -163,7 +163,7 @@ nav li:last-child {
 
 /* Team Photo */
 #team_pic {
-  background-image: url("../images/teamphoto.jpg");
+  background-image: url("images/teamphoto.jpg");
   display: block;
   margin: 0 auto;
   padding: 50px;
@@ -177,10 +177,10 @@ nav li:last-child {
   transition: background-image 5s;
 }
 #team_pic:hover {
-  background-image: url("../images/teamphoto_wizardedit.png");
+  background-image: url("images/teamphoto_wizardedit.png");
 }
 #team_pic:active {
-  background-image: url("../images/animated_wizard_teamphoto.png");
+  background-image: url("images/animated_wizard_teamphoto.png");
 }
 
 /* Team Profiles */
